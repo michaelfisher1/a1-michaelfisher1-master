@@ -4,10 +4,7 @@ Michael Fisher, 20/03/2017, CP1402 Assignment 1 - Reading List, https://github.c
 VALID_CHOICES = ["R","r","C","c","A","a","M","m","Q","q"]
 MENU_OPTIONS = "R - List Required books\nC - List completed books\nA - Add a book\nM - Mark a book as completed\n" \
                "Q - Quit"
-TITLES=[]
-AUTHORS=[]
-PAGES=[]
-STATUSES=[]
+BOOKS=[]
 
 def get_menu_choice():
     print(MENU_OPTIONS)
@@ -24,14 +21,11 @@ def main():
     in_file = open("temp.csv","r")
     for lines in in_file:
         details = lines.split(",")
-        TITLES.append(details[0])
-        AUTHORS.append(details[1])
-        PAGES.append(details[2])
-        STATUSES.append(details[3])
-    print(TITLES)
-    print(AUTHORS)
-    print(PAGES)
-    print(STATUSES)
-
+        BOOKS.append(details)
+    index = 0
+    for i in BOOKS:
+        if BOOKS[index][3] == "c\n":
+            print("{:2}.{:36}{:15}{} pages".format(index,BOOKS[index][0], BOOKS[index][1], BOOKS[index][2]))
+        index = index +1
 if __name__ == '__main__':
     main()
